@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Semantic HTML</title>
+
+		<link rel="stylesheet" href="./css/reveal.css">
+		<link rel="stylesheet" href="./css/theme/white.css">
+		<style type="text/css">
+
+		/*.reveal .controls div.navigate-left, .reveal .controls div.navigate-left.enabled {
+		  border-right-color: green; }
+
+		.reveal .controls div.navigate-right, .reveal .controls div.navigate-right.enabled {
+		  border-left-color: green; }
+
+		.reveal .controls div.navigate-up, .reveal .controls div.navigate-up.enabled {
+		  border-bottom-color: green; }
+
+		.reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled {
+		  border-top-color: green; }
+
+		.reveal .progress {
+		  background: rgba(0, 0, 0, 0.2); }
+
+		.reveal .progress span {
+		  background: green;
+
+		}*/
+
+		.align-left{text-align: left;}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+	    <section><h1>FED Sync</h1><i class="fragment" data-fragment-index="1">HTML and Related Conventions</i></section>
+
+			<section>
+				<a href="http://adrianroselli.com/2011/11/struggling-with-semantics.html" target="_blank"><img src="./img/semantics-comic.png" alt="comic about semantics"></a>
+				<!-- <section data-transition="slide">
+					<h3>HTML</h3>
+					<p class="fragment" data-fragment-index="1">Markup</p>
+				</section> -->
+			</section>
+
+			<section class="align-left">
+				<h3>Why Semantic HTML?</h3>
+        <ul>
+          <li class="fragment" data-fragment-index="1">
+            Easier To Read
+          </li>
+          <li class="fragment" data-fragment-index="2">
+            Accessibility (Screen Readers)
+          </li>
+          <li class="fragment" data-fragment-index="3">
+            HTML5
+          </li>
+          <li class="fragment" data-fragment-index="4">
+            Hierachy
+          </li>
+          <li class="fragment" data-fragment-index="5">
+            <a href="http://adactio.com/journal/4999/" target="_blank">Pursuing Semantic Value</a>
+          </li>
+        </ul>
+			</section>
+
+      <section class="align-left">
+				<h3>Common Flaws</h3>
+        <ul>
+          <li class="fragment" data-fragment-index="1">
+            Replacing &#60;div> with &#60;section>
+          </li>
+          <li class="fragment" data-fragment-index="2">
+            Missing Close Tags That Require Closing (&#60;body>)
+          </li>
+          <li class="fragment" data-fragment-index="3">
+            In-Line Styling/Javascript
+          </li>
+          <li class="fragment" data-fragment-index="4">
+            No Comments
+          </li>
+          <li class="fragment" data-fragment-index="5">
+            Styling Via HTML (Overuse of &#60;br>)
+          </li>
+          <li class="fragment" data-fragment-index="6">
+            Missing 'alt' Attributes For Images
+          </li>
+        </ul>
+			</section>
+
+      <section class="align-left">
+				<h3>Tips</h3>
+        <ul>
+          <li class="fragment" data-fragment-index="1">
+            Paragraphs Of Text Should Be Inside &#60;p>
+          </li>
+          <li class="fragment" data-fragment-index="2">
+            Items In A List Should Be Inside A &#60;ul>, &#60;ol>, or &#60;dl>
+          </li>
+          <li class="fragment" data-fragment-index="3">
+            Every form input that has text attached should utilize a &#60;label> tag. Especially radio or checkbox elements.
+          </li>
+          <li class="fragment" data-fragment-index="4">
+            For Consistency Use" (double quotes), not ' (single quotes)
+          </li>
+          <li class="fragment" data-fragment-index="5">
+            Avoid trailing slashes in self-closing elements. such as &#60;br>, &#60;hr>, &#60;img>, &#60;meta> and &#60;input>
+          </li>
+        </ul>
+			</section>
+
+			<section>
+				<h3>Sectioning</h3>
+				<a href="http://html5doctor.com/resources/#flowchart" target="_blank"><img src="./img/sectioning-flowchart.png" alt="HTML5 Sectioning Flowchart"></a>
+			</section>
+
+
+      <section>
+				<h3>Lean MarkUp</h3>
+        <p>
+          Avoid unnecessarily wrapping elements in a parent element when possible. This creates extra bloat and over-specificity in the CSS.
+        </p>
+        <pre><code>
+            <!-- Bad -->
+            &#60;div class="headline--bad">
+              &#60;h1>Headline&#60;/h1>
+            &#60;/div>
+
+            <!-- Good -->
+            &#60;h1 class="h1 headline--good">Headline&#60;/h1>
+        </code></pre>
+			</section>
+
+      <section>
+				<h3>IDs vs Classes</h3>
+        <p>
+          Using IDs offers no benefit over classes and tends to cause specificity issues and having to write non-modular, non-reusable CSS. Always use classes for CSS styling hooks.
+          <br>
+          <em>IDs can still be used for other functionality (labels).</em>
+        </p>
+			</section>
+
+      <section>
+        <h3>Javascript HTML Hooks</h3>
+        Always use a new class with a js- prefix when adding a hook in your html for javascript.
+        <br>
+        Never use the js- hook as a styling hook in your CSS
+        <pre><code>
+          &#60;div class="button button--primary js-menu-button">
+              ...
+          &#60;/div>
+
+          &#60;select class="input input--select js-date-picker">
+              &#60;option>option&#60;/option>
+              &#60;option>option&#60;/option>
+          &#60;/select>
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>Class Naming Conventions</h3>
+        <ul style="font-size: 18px;">
+          <li>
+            Separate words in a class name with a single - (hyphen)
+          </li>
+          <li>
+            Never use a single _ (underscore) to separate words in a class name
+          </li>
+          <li>
+            Never use camel-casing in class names
+          </li>
+          <li>
+            Always be descriptive when choosing your class name class="button"
+          </li>
+          <li>
+            Never abbreviate common names like button, header, footer, etc. Bad: btn, hdr, ftr
+          </li>
+          <li>
+            Always use a is- prefix for state rules that are shared between CSS and JS
+          </li>
+        </ul>
+        <pre><code>
+          .menu {
+              ...
+          }
+
+          .menu.is-open {
+              ...
+          }
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>BEM Naming Convention</h3>
+        <p>
+          BEM, or Block Element Modifier is a methodology, that helps you to achieve reusable components and code sharing in the front-end.
+        </p>
+        <pre>
+          <code>
+            .form {}
+            .form--signup {}
+            .form__input {}
+            .form__input--select {}
+            .form__submit {}
+          </code>
+        </pre>
+        <a href="http://getbem.com/naming/" target="_blank">Learn BEM</a>
+      </section>
+
+      <section>
+        <h3>Dev Tools</h3>
+        <p>
+          A FEDs Best Friend
+        </p>
+        <a href="https://developer.chrome.com/devtools" target="_blank"><img src="./img/devtools-window.png" alt="chrome dev tools"></a>
+      </section>
+
+
+
+
+      <section class="align-left">
+				<h3>Resources</h3>
+        <ul>
+          <li>
+            <a href="http://google.github.io/styleguide/htmlcssguide.xml" target="_blank">Googles HTML/CSS Style Guide</a>
+          </li>
+          <li>
+            <a href="http://dannyrb.com/posts/the-programmers-guide-to-better-seo-semantic-markup-and-html5/" target="_blank">The Programmers Guide To Better Semantic MarkUp</a>
+          </li>
+          <li>
+            <a href="http://www.smashingmagazine.com/2011/11/html5-semantics/#top" target="_blank">Smashing Magazine HTML5 Semantics</a>
+          </li>
+        </ul>
+      </section>
+
+			</div>
+
+		</div>
+
+		<script src="./js/reveal.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				transitionSpeed: 'fast',
+			    transition: 'fade', // none/fade/slide/convex/concave/zoom
+			    history: false,
+
+			});
+
+		</script>
+
+	</body>
+</html>
